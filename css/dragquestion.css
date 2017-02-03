@@ -155,11 +155,11 @@ html.h5p-iframe .h5p-container.h5p-dragquestion.h5p-semi-fullscreen {
   background: none;
 }
 .h5p-dragquestion .h5p-dropped.h5p-correct:after {
-  content: "\f00c";
+  /*content: "\f00c";*/
 }
 
 .h5p-dragquestion .h5p-dropped.h5p-wrong:after {
-  content: "\f00d";
+  /*content: "\f00d";*/
 }
 
 .h5p-dragquestion .h5p-dropzone {
