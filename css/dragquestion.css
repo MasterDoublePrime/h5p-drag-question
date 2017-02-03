@@ -154,13 +154,6 @@ html.h5p-iframe .h5p-container.h5p-dragquestion.h5p-semi-fullscreen {
 .h5p-dragquestion .h5p-draggable.h5p-correct.h5p-advanced-text:after, .h5p-dragquestion .h5p-draggable.h5p-wrong.h5p-advanced-text:after {
   background: none;
 }
-.h5p-dragquestion .h5p-dropped.h5p-correct:after {
-  content: "\f00c";
-}
-
-.h5p-dragquestion .h5p-dropped.h5p-wrong:after {
-  content: "\f00d";
-}
 
 .h5p-dragquestion .h5p-dropzone {
   z-index: 2;
