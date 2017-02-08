@@ -146,17 +146,19 @@ H5P.DragQuestion = (function ($) {
     });
 
 
-C.prototype.setLocationOfDraggableWithinDropzone = function(element){
+  $( document ).ready(function() {
+    console.log( "**************************ready!*****************************" );
+    x = $(".h5p-dropzone").position(); 
+                console.log("x.left : " +x.left);  
 
-          var x = $(".h5p-dropzone").position();
 
-          $(".h5p-draggable.ui-draggable.h5p-advanced-text.h5p-draggable-hover.ui-draggable-dragging").delay(100).animate({
-           left: x.left
-          });
-
-//     $(".h5p-draggable.ui-draggable.h5p-advanced-text.h5p-dropped.ui-draggable-disabled.ui-state-disabled").delay(1500).animate({
-//       left: x.left
-//     });
+});
+  C.prototype.setLocationOfDraggableWithinDropzone = function(element){ 
+//             var x = $(".h5p-dropzone").position(); 
+            console.log("x.left : " +x.left);  
+            $(".h5p-draggable.ui-draggable.h5p-advanced-text.h5p-draggable-hover.ui-draggable-dragging").delay(100).animate({ 
+             left: 50 + "%" 
+            }); 
 
     
 
@@ -826,12 +828,11 @@ else dropZoneFont=16
       // Set both color and gradient.
       C.setOpacity($element, 'backgroundColor', opacity);
       C.setOpacity($element, 'backgroundImage', opacity);
-         if (!opacity) {		
-        $element.css({		
-          "background-color": "rgba(245, 245, 245, 0)",		
-          "background-image": "none",
-          	
-        });		
+      if (!opacity) {
+        $element.css({
+          "background-color": "rgba(245, 245, 245, 0)",
+          "background-image": "none"
+        });
       }
       return;
     }

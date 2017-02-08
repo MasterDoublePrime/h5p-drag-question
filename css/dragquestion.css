@@ -116,10 +116,12 @@ html.h5p-iframe .h5p-container.h5p-dragquestion.h5p-semi-fullscreen {
 }
 
 .h5p-dragquestion .h5p-dropped.h5p-correct, .h5p-dragquestion .h5p-dropzone.h5p-correct-answer {
-  color: #255c41;
-  border: 0.1em solid #9dd8bb;
-  box-shadow: none;
-  background: #9dd8bb;
+   color: #DDBC64; 
+  border: 0.1em solid #9dd8bb; 
+  box-shadow: none; 
+  background: #9dd8bb; 
+  margin-top:auto; 
+  margin-bottom:auto; 
 }
 
 .h5p-dragquestion .h5p-dropped.h5p-wrong {
@@ -155,11 +157,11 @@ html.h5p-iframe .h5p-container.h5p-dragquestion.h5p-semi-fullscreen {
   background: none;
 }
 .h5p-dragquestion .h5p-dropped.h5p-correct:after {
-  content: "\f00c";
+  /*content: "\f00c";*/ 
 }
 
 .h5p-dragquestion .h5p-dropped.h5p-wrong:after {
-  content: "\f00d";
+  /*content: "\f00d";*/ 
 }
 
 .h5p-dragquestion .h5p-dropzone {
