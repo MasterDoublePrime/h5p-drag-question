@@ -148,7 +148,7 @@ H5P.DragQuestion = (function ($) {
 
 C.prototype.setLocationOfDraggableWithinDropzone = function(element){
 
-          var x = $(".h5p-dropzone").position();
+          var x = $(".h5p-current .h5p-dropzone").position();
 
           $(".h5p-draggable.ui-draggable.h5p-advanced-text.h5p-draggable-hover.ui-draggable-dragging").delay(100).animate({
            left: x.left
