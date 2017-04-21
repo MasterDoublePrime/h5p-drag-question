@@ -31,14 +31,13 @@ H5P.DragQuestion = (function ($) {
           size: {
             width: 620,
             height: 310
-          
+          },
+          gameMode: 'singleDZ' // Added by SUPRIYA RAJGOPAL
         },
-         gameMode: 'singleDZ' //Added by SUPRIYA RAJGOPAL
-      },
         task: {
           elements: [],
           dropZones: []
-        },
+        }
       },
       behaviour: {
         enableRetry: true,
@@ -234,7 +233,7 @@ C.prototype.setLocationOfDraggableWithinDropzone = function(element){
     definition.correctResponsesPattern = [''];
     definition.target = [];
     var firstCorrectPair = true;
-    for (var i = 0; i < this. C.prototype.createQuestionContent; i++) {
+    for (var i = 0; i < this.options.question.task.dropZones.length; i++) {
       definition.target.push({
         'id': '' + i,
         'description': {
