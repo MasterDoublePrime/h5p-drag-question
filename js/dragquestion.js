@@ -145,27 +145,28 @@ H5P.DragQuestion = (function ($) {
     });
 
 
-C.prototype.setLocationOfDraggableWithinDropzone = function(element){
+    // TODO: try to move this code from the library, this is not upgrade safe
+    C.prototype.setLocationOfDraggableWithinDropzone = function(element) {
+      var draggable = $(".h5p-draggable.ui-draggable.h5p-advanced-text.h5p-draggable-hover.ui-draggable-dragging");
+      var dropZone = $(".h5p-dragquestion:visible .h5p-dropzone");
+      var dropZonePosition;
 
-          var x = $(".h5p-current .h5p-dropzone").position();
+      if (dropZone.length === 0) {
+        throw 'Unable to determine drop zone!';
+      }
 
-          $(".h5p-draggable.ui-draggable.h5p-advanced-text.h5p-draggable-hover.ui-draggable-dragging").delay(100).animate({
-           left: x.left
-          });
+      if (draggable.length === 0) {
+        throw 'Unable to determine draggable!';
+      }
 
-//     $(".h5p-draggable.ui-draggable.h5p-advanced-text.h5p-dropped.ui-draggable-disabled.ui-state-disabled").delay(1500).animate({
-//       left: x.left
-//     });
+      dropZonePosition = dropZone.position();
 
-    
+      draggable.delay(100).animate({
+        left: dropZonePosition.left
+      });
 
-    options.question.task.elements[0].x = options.question.task.dropZones[0].x;
-    console.log("options.question.task.dropZones[0].x : " + options.question.task.dropZones[0].x);
-
-
-
-    return;
-}
+      options.question.task.elements[0].x = options.question.task.dropZones[0].x;
+    }
   }
 
   C.prototype = Object.create(H5P.Question.prototype);
