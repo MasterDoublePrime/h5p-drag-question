@@ -900,9 +900,6 @@ H5P.DragQuestion = (function ($) {
     self.y = element.y;
     self.width = element.width;
     self.height = element.height;
-    if (self.height < 10) {
-      self.height = 10;
-    }
     self.backgroundOpacity = element.backgroundOpacity;
     self.dropZones = element.dropZones;
     self.type = element.type;
@@ -986,8 +983,8 @@ H5P.DragQuestion = (function ($) {
       css: {
         left: self.x + '%',
         top: self.y + '%',
-        width: 40 + '%',
-        height: self.height + '%',
+        width: self.width + 'em',
+        height: self.height + 'em',
         fontSize: draggableFont
       },
       appendTo: $container
@@ -1314,7 +1311,7 @@ H5P.DragQuestion = (function ($) {
       css: {
         left: self.x + '%',
         top: self.y + '%',
-        width: 40 + '%',
+        width: self.width + 'em',
         height: self.height + 'em'
       },
       html: html
