@@ -31,8 +31,7 @@ H5P.DragQuestion = (function ($) {
           size: {
             width: 620,
             height: 310
-          },
-          gameMode: 'singleDZ' //Added by SUPRIYA RAJGOPAL
+          }
         },
         task: {
           elements: [],
@@ -430,7 +429,6 @@ H5P.DragQuestion = (function ($) {
 
     var size = this.options.question.settings.size;
     var ratio = size.width / size.height;
-    var surface = size.width * size.height;
     var parentContainer = this.$container.parent();
     // Use parent container as basis for resize.
     var width = parentContainer.width() - parseFloat(parentContainer.css('margin-left')) - parseFloat(parentContainer.css('margin-right'));
@@ -461,11 +459,7 @@ H5P.DragQuestion = (function ($) {
       }
     }
 
-    if (width < 400) {
-      var height = surface / (width * 1.25);
-    } else {
-      var height = surface / (width);
-    }
+    var height = width / ratio;
 
     // Set natural size if no parent width
     if (width <= 0) {
@@ -474,13 +468,26 @@ H5P.DragQuestion = (function ($) {
     }
 
     //adjusting fontsize up a bit for mobile portrait orientation.
-    var dropZoneFont;
-    if (screen.width < 400){
+    var dropZoneFont = 16;
+    var lastWidth = this.$container.data('lastWidth');
+    this.$container.data('lastWidth', width);
+    if (width < 415) {
       dropZoneFont = 22;
+      height *= 22 / 16;
+      if (typeof lastWidth === 'undefined' || lastWidth >= 415) {
+        this.$container.children().each(function () {
+          this.style.width = (parseFloat(this.style.width) / 22 * 16) + 'em';
+          this.style.height = (parseFloat(this.style.height) * 22 / 16) + 'em';
+        });
+      }
     }
-    else {
-      dropZoneFont = 16;
+    else if (typeof lastWidth !== 'undefined' && lastWidth < 415) {
+      this.$container.children().each(function () {
+        this.style.width = (parseFloat(this.style.width) * 22 / 16) + 'em';
+        this.style.height = (parseFloat(this.style.height) / 22 * 16) + 'em';
+      });
     }
+
     this.$container.css({
       width: width + 'px',
       height: height + 'px',
@@ -975,13 +982,6 @@ H5P.DragQuestion = (function ($) {
       element = self.elements[index];
     }
 
-    var draggableFont;
-    if (screen.width <= 400){
-      draggableFont = 14;
-    }
-    else {
-      draggableFont = 16;
-    }
     // Attach element
     element.$ = $('<div/>', {
       class: 'h5p-draggable',
@@ -989,8 +989,7 @@ H5P.DragQuestion = (function ($) {
         left: self.x + '%',
         top: self.y + '%',
         width: self.width + 'em',
-        height: self.height + 'em',
-        fontSize: draggableFont
+        height: self.height + 'em'
       },
       appendTo: $container
     })
